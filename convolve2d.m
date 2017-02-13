@@ -13,7 +13,6 @@ function [output_image] = convolve2d(image, kernel)
 			output_image(i,j) = sum(sum(sub_patch.*kernel));
 		end	
 	end
-	% output_image = imcrop(output_image, [0, 0, m, n]);
 	output_image = floor(output_image);
-	imshow(output_image, []);
+	% imshow(output_image, []);
 end
