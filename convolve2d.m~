@@ -1,0 +1,18 @@
+function [output_image] = convolve2d(image, kernel)
+	m = size(image, 1);
+	n = size(image, 2);
+	k = length(kernel);
+	for i = [1:m],
+		for j = [1:n],
+			if(i+k> m || j+k>n),
+				continue			
+			end
+			
+			sub_patch = imcrop(image, [j, i, k, k]);
+			size(sub_patch)
+			size(kernel)
+			output_image(i,j) = sum(sub_patch.*kernel);
+		end	
+	end
+	output_image = imcrop(output_image, [0, 0, m-k, n-k]);
+end
