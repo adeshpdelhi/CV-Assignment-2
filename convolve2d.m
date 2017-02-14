@@ -2,7 +2,7 @@ function [output_image] = convolve2d(image, kernel)
 	m = size(image, 1);
 	n = size(image, 2);
 	k = length(kernel);
-	output_image = zeros(m-k,n-k);
+	output_image = zeros(m,n);
 	for i = [1:m],
 		fprintf('%d\n',i);
 		for j = [1:n],	

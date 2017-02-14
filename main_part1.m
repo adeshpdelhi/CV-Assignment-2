@@ -75,3 +75,13 @@ voutput = convolve2d(grayimage, vsobel);
 output = houtput.^2 + voutput.^2;
 output = sqrt(output);
 imshow(output, []);
+
+
+
+
+kernel = fspecial('gaussian', 11, 7);
+blurred = convolve2d(grayimage, kernel);
+kernel = [0,0,0;0,2,0;0,0,0];
+doubled = convolve2d(grayimage, kernel);
+sharpened = doubled - blurred./9;
+imshow(sharpened, [])
