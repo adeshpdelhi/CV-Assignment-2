@@ -77,4 +77,4 @@ imshow(output, []);
 
 kernel = fspecial('gaussian', 11, 3);
 blurred_output = convolve2d(grayimage, kernel);
-imshow(double(grayimage) - double(blurred_output)/2,[]);
+imshow(double(grayimage) - double(blurred_output)/10,[]);
