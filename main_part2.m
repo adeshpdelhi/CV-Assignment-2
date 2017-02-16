@@ -1,25 +1,27 @@
-image = imread('road1.png');
-grayimage = imadjust(rgb2gray(image));
-output = edge(grayimage, 'canny',[0 0.25]);
-imshow(output, []);
+image = imread('road2.png');
+grayimage = rgb2gray(image); 
+grayimage = imgaussfilt(grayimage, 2);
+grayimage = imsharpen(grayimage, 'Amount', 1);
+grayimage = edge(grayimage, 'canny',[0 0.25]);
+imshow(grayimage, []);
 
 
 
 
 % canny edge start
-image = imread('road1.png');
+image = imread('road2.png');
 grayimage = rgb2gray(image);
-output = edge(grayimage, 'canny',[0 0.25]);
+output = edge(grayimage, 'canny',[0.05 0.25]);
 imshow(output, []);
 % canny edge over
 
 
 
-image = imread('road1.png');
+image = imread('road2.png');
 grayimage = rgb2gray(image);
 edged = edge(grayimage, 'canny', [0 0.25]);
 [houghed, theta, rho] = hough(edged);
-P = houghpeaks(houghed,5,'threshold',ceil(0.3*max(houghed(:))));
+P = houghpeaks(houghed,25,'threshold',ceil(0.5*max(houghed(:))));
 lines = houghlines(edged,theta,rho,P,'FillGap',5,'MinLength',7);
 figure, imshow(image), hold on
 max_len = 0;

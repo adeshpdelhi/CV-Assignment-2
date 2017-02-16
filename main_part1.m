@@ -79,22 +79,22 @@ imshow(output, []);
 
 
 
-kernel = fspecial('gaussian', 11, 7);
-blurred = convolve2d(grayimage, kernel);
-kernel = [0,0,0;0,2,0;0,0,0];
-doubled = convolve2d(grayimage, kernel);
-sharpened = doubled - blurred;
-imshow(sharpened, []);
-
-
-
-% % blurred_kernel = fspecial('gaussian', 11, 3);
-% blurred_kernel = ones(3,3);
-% % blurred = convolve2d(grayimage, kernel);
-% doubled_kernel = zeros(3,3);
-% doubled_kernel(2,2) = 2;
-% sharpened = convolve2d(grayimage,  doubled_kernel - (blurred_kernel./9));
-% % sharpened = doubled - blurred./9;
+% kernel = fspecial('gaussian', 11, 7);
+% blurred = convolve2d(grayimage, kernel);
+% kernel = [0,0,0;0,2,0;0,0,0];
+% doubled = convolve2d(grayimage, kernel);
+% sharpened = doubled - blurred;
 % imshow(sharpened, []);
-% figure;
-% imshow(imsharpen(grayimage),[]);
+
+
+
+blurred_kernel = fspecial('gaussian', 3, 3);
+% blurred_kernel = ones(3,3);
+% blurred = convolve2d(grayimage, kernel);
+doubled_kernel = zeros(3,3);
+doubled_kernel(2,2) = 2;
+sharpened = convolve2d(grayimage,  doubled_kernel - (blurred_kernel./9));
+% sharpened = doubled - blurred./9;
+imshow(sharpened, []);
+figure;
+imshow(imsharpen(grayimage),[]);
