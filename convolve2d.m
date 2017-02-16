@@ -2,6 +2,8 @@ function [output_image] = convolve2d(image, kernel)
 	m = size(image, 1);
 	n = size(image, 2);
 	k = length(kernel);
+	kernel = flipdim(kernel, 1);
+	kernel = flipdim(kernel, 2);
 	output_image = zeros(m,n);
 	for i = [1:m],
 		fprintf('%d\n',i);

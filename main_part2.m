@@ -1,9 +1,10 @@
 image = imread('road2.png');
 grayimage = rgb2gray(image); 
 grayimage = imgaussfilt(grayimage, 2);
-grayimage = imsharpen(grayimage, 'Amount', 1);
-grayimage = edge(grayimage, 'canny',[0 0.25]);
-imshow(grayimage, []);
+grayimage = imsharpen(grayimage, 'Amount', 5);
+smthn = imbinarize(grayimage, 'adaptive','Sensitivity', 0.4);
+imshow(smthn, []);
+
 
 
 
@@ -17,6 +18,7 @@ imshow(output, []);
 
 
 
+%obtained from: https://in.mathworks.com/help/images/hough-transform.html
 image = imread('road2.png');
 grayimage = rgb2gray(image);
 edged = edge(grayimage, 'canny', [0 0.25]);
